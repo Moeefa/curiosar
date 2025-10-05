@@ -5,6 +5,7 @@ import { ShootingStars } from "@/components/ui/shooting-stars";
 import { Slider } from "@/components/ui/slider";
 import { StarsBackground } from "@/components/ui/stars-background";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import type { GlobeMethods } from "react-globe.gl";
 const Globe = dynamic(() => import("react-globe.gl"), {
@@ -54,19 +55,19 @@ export default function Home() {
 
 	return (
 		<div className="font-sans justify-items-center">
-			<main className="flex flex-col gap-[32px] items-center mb-20">
+			<main className="flex flex-col gap-[32px] items-center mb-20 space-y-8">
 				<section className="w-full h-80 flex flex-col text-center justify-center relative bg-black overflow-hidden">
 					<h1 className="text-white scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance">
 						CurioSAR Poconé
 					</h1>
-					<p className="leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white/90 mix-blend-difference">
+					<p className="select-none leading-7 [&:not(:first-child)]:mt-6 z-20 text-clip text-transparent bg-clip-text bg-white/90 mix-blend-difference">
 						Revelando as cicatrizes invisíveis do Pantanal através do olhar do
 						radar.
 					</p>
 
 					<div
 						ref={globeContainerRef}
-						className="absolute translate-y-48 left-1/2 -translate-x-1/2 w-[203%] h-[203%]"
+						className="absolute translate-y-48 left-1/2 -translate-x-1/2 w-[203%] h-[203%] z-10"
 					>
 						<Globe
 							ref={globeRef}
@@ -80,10 +81,10 @@ export default function Home() {
 					</div>
 
 					<ShootingStars />
-					<StarsBackground />
+					<StarsBackground starDensity={0.001} />
 				</section>
 
-				<section className="max-w-2xl w-full flex flex-col text-center relative overflow-hidden">
+				<section className="max-w-2xl w-full flex flex-col text-center relative overflow-hidden px-2">
 					<h2 className="scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
 						O Desafio
 					</h2>
@@ -96,7 +97,7 @@ export default function Home() {
 					</p>
 				</section>
 
-				<section className="max-w-2xl w-full flex flex-col items-center text-center relative overflow-hidden">
+				<section className="max-w-2xl w-full flex flex-col items-center text-center relative overflow-hidden px-2">
 					<h2 className="scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
 						Linha do Tempo das Queimadas (2010–2024)
 					</h2>
@@ -117,7 +118,7 @@ export default function Home() {
 					<SelectDate value={date} />
 				</section>
 
-				<section className="max-w-2xl w-full flex flex-col text-center relative overflow-hidden">
+				<section className="max-w-2xl w-full flex flex-col text-center relative overflow-hidden px-2">
 					<h2 className="scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
 						O que descobrimos
 					</h2>
@@ -127,6 +128,13 @@ export default function Home() {
 						de biomassa, enquanto a VV destacou mudanças na umidade do solo.
 					</p>
 				</section>
+
+				<Link
+					href="/timeline"
+					className="px-6 py-3 bg-gradient-to-t from-blue-600 to-blue-500 text-white rounded-xl hover:to-blue-600 hover:from-blue-700 transition"
+				>
+					Linha do Tempo Completa
+				</Link>
 			</main>
 		</div>
 	);
