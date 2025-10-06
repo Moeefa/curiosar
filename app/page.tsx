@@ -89,14 +89,6 @@ export default async function Home() {
 				>
 					Full Timeline
 				</Link>
-
-				<Image
-					src="https://drive.google.com/uc?export=download&id=1WHUKZ6j1nOut3jBYQ2bDOCTSj97i7iYD"
-					alt="SAR Image Example"
-					width={600}
-					height={400}
-					className="rounded-lg shadow-lg object-contain"
-				/>
 			</main>
 		</div>
 	);
