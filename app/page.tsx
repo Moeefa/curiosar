@@ -13,7 +13,7 @@ import path from "path";
 import TimelineHome from "./gallery";
 import { Globe } from "./globe";
 
-export default function Home() {
+export default async function Home() {
 	const mapsDir = path.join(process.cwd(), "public/maps");
 	const files = fs.readdirSync(mapsDir).filter((f) => f.endsWith(".jpg"));
 
@@ -36,7 +36,7 @@ export default function Home() {
 						CurioSAR Poconé <Satellite className="ml-2 h-[1lh]" />
 					</h1>
 					<p className="select-none leading-7 [&:not(:first-child)]:mt-6 z-20 text-clip text-transparent bg-clip-text bg-white/90 mix-blend-difference">
-						Revelando as cicatrizes invisíveis do Pantanal através do olhar do
+						Revealing the invisible scars of the Pantanal through the lens of
 						radar.
 					</p>
 
@@ -48,25 +48,25 @@ export default function Home() {
 
 				<section className="max-w-2xl w-full flex flex-col text-center relative overflow-hidden px-2">
 					<h2 className="scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
-						O Desafio
+						The Challenge
 					</h2>
 					<p className="leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
-						Poconé, no coração do Pantanal mato-grossense, enfrenta o avanço das
-						queimadas — um problema que destrói ecossistemas e ameaça
-						comunidades locais. Nosso desafio no NASA Space Apps Challenge foi
-						usar a tecnologia SAR para observar essas transformações mesmo
-						quando a fumaça esconde o solo da vista humana.
+						Poconé, in the heart of the Mato Grosso Pantanal, faces advancing
+						wildfires — a problem that destroys ecosystems and threatens local
+						communities. Our challenge at the NASA Space Apps Challenge was to
+						use SAR technology to monitor these changes even when smoke hides
+						the ground from human view.
 					</p>
 				</section>
 
 				<section className="w-full flex flex-col items-center text-center relative overflow-hidden px-2 mb-0">
 					<h2 className="max-w-2xl scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
-						Linha do Tempo das Queimadas (2010–2024)
+						Wildfire Timeline (2010–2024)
 					</h2>
 					<p className="max-w-2xl mb-4 leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
-						Explore como o Pantanal mudou ao longo dos anos. Use o controle
-						abaixo para navegar entre as imagens de radar e visualizar o impacto
-						das queimadas.
+						Explore how the Pantanal has changed over the years. Use the control
+						below to navigate between radar images and visualize the impact of
+						wildfires.
 					</p>
 
 					<TimelineHome imagesByYear={imagesByYear} />
@@ -74,12 +74,12 @@ export default function Home() {
 
 				<section className="max-w-2xl w-full flex flex-col text-center relative overflow-hidden px-2">
 					<h2 className="scroll-m-20 text-center text-2xl font-extrabold tracking-tight text-balance">
-						O que descobrimos
+						What We Discovered
 					</h2>
 					<p className="leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
-						As imagens SAR revelaram áreas impactadas que não eram visíveis em
-						sensores ópticos. A polarização VH mostrou-se mais sensível à perda
-						de biomassa, enquanto a VV destacou mudanças na umidade do solo.
+						SAR images revealed impacted areas that were not visible in optical
+						sensors. The VH polarization proved more sensitive to biomass loss,
+						while VV highlighted changes in soil moisture.
 					</p>
 				</section>
 
@@ -87,8 +87,16 @@ export default function Home() {
 					href="/timeline"
 					className="px-6 py-3 bg-gradient-to-t from-blue-600 to-blue-500 text-white rounded-xl hover:to-blue-600 hover:from-blue-700 transition"
 				>
-					Linha do Tempo Completa
+					Full Timeline
 				</Link>
+
+				<Image
+					src="https://drive.google.com/uc?export=download&id=1WHUKZ6j1nOut3jBYQ2bDOCTSj97i7iYD"
+					alt="SAR Image Example"
+					width={600}
+					height={400}
+					className="rounded-lg shadow-lg object-contain"
+				/>
 			</main>
 		</div>
 	);

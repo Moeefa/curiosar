@@ -16,6 +16,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "flipclock": "^1.0.1",
+    "googleapis": "^161.0.0",
     "i": "^0.3.7",
     "lucide-react": "^0.539.0",
     "netcdfjs": "^3.0.0",
