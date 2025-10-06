@@ -6,7 +6,7 @@ import SelectDate from "@/components/select-date";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "@/components/icons/arrow-left";
 import { ArrowRight } from "@/components/icons/arrow-right";
-
+//
 interface TimelineGalleryProps {
 	imagesByYear: Record<number, string[]>;
 }
