@@ -52,7 +52,7 @@ export default async function Home() {
 					</h2>
 					<p className="leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
 						Poconé, in the heart of the Mato Grosso Pantanal, faces advancing
-						wildfires — a problem that destroys ecosystems and threatens local
+						wildfires, a problem that destroys ecosystems and threatens local
 						communities. Our challenge at the NASA Space Apps Challenge was to
 						use SAR technology to monitor these changes even when smoke hides
 						the ground from human view.
