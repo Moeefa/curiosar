@@ -57,6 +57,7 @@ export default function TimelineGallery({
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
 				{currentImages.map((src, idx) => (
 					<Image
+						unoptimized
 						key={idx}
 						src={src}
 						alt={`SAR ${currentYear} ${idx}`}

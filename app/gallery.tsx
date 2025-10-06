@@ -40,6 +40,7 @@ export default function TimelineHome({ imagesByYear }: TimelineHomeProps) {
 				<div className="flex justify-center w-full flex-1 relative">
 					{currentImages.map((src, idx) => (
 						<Image
+							unoptimized
 							key={idx}
 							src={src}
 							alt={`SAR ${currentYear} - ${idx + 1}`}
