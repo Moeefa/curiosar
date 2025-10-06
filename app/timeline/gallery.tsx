@@ -6,9 +6,14 @@ import SelectDate from "@/components/select-date";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "@/components/icons/arrow-left";
 import { ArrowRight } from "@/components/icons/arrow-right";
-//
+
+interface YearData {
+	description: string;
+	images: string[];
+}
+
 interface TimelineGalleryProps {
-	imagesByYear: Record<number, string[]>;
+	imagesByYear: Record<number, YearData>;
 }
 
 export default function TimelineGallery({
@@ -18,14 +23,14 @@ export default function TimelineGallery({
 	const [currentYearIndex, setCurrentYearIndex] = useState(0);
 
 	const currentYear = years[currentYearIndex];
-	const currentImages = imagesByYear[currentYear] || [];
+	const currentData = imagesByYear[currentYear]; // includes description and images
 
 	const prevYear = () => setCurrentYearIndex((i) => Math.max(0, i - 1));
 	const nextYear = () =>
 		setCurrentYearIndex((i) => Math.min(years.length - 1, i + 1));
 
 	return (
-		<div className="px-4 py-8">
+		<div className="px-4 py-8 flex flex-col items-center">
 			<h1 className="text-3xl font-bold text-center">
 				SAR Timeline: 2010–2025
 			</h1>
@@ -54,8 +59,14 @@ export default function TimelineGallery({
 				</Button>
 			</div>
 
+			{/* Description */}
+			<p className="mt-6 max-w-2xl text-center whitespace-pre-line">
+				{currentData.description}
+			</p>
+
+			{/* Images */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-				{currentImages.map((src, idx) => (
+				{currentData.images.map((src, idx) => (
 					<Image
 						unoptimized
 						key={idx}
