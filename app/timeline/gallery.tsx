@@ -32,7 +32,7 @@ export default function TimelineGallery({
 	return (
 		<div className="px-4 py-8 flex flex-col items-center">
 			<h1 className="text-3xl font-bold text-center">
-				SAR Timeline: 2010–2025
+				SAR Timeline: 2019–2024
 			</h1>
 
 			<div className="flex items-center gap-4 justify-center mt-4">
