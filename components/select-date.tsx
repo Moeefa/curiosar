@@ -12,12 +12,12 @@ export default function SelectDate({ value }: SelectDateProps) {
 	const clockInstance = useRef<ReturnType<typeof flipClock> | null>(null);
 	const previousValue = useRef(value[0] || 2010);
 
-	// Initialize flipClock once
 	useEffect(() => {
-		if (!clockRef.current) return;
+		const el = clockRef.current;
+		if (!el) return;
 
-		clockInstance.current = flipClock({
-			parent: clockRef.current,
+		const instance = flipClock({
+			parent: el,
 			autoStart: false,
 			face: counter({
 				value: value[0] || 2010,
@@ -28,19 +28,29 @@ export default function SelectDate({ value }: SelectDateProps) {
 				}),
 			}),
 		});
+
+		clockInstance.current = instance;
+
+		return () => {
+			// @ts-expect-error flipclock destroy not typed
+			instance.destroy?.();
+			el.innerHTML = "";
+			clockInstance.current = null;
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	// Update flipClock when value changes
 	useEffect(() => {
-		if (!clockInstance.current) return;
+		const instance = clockInstance.current;
+		if (!instance) return;
 
 		const newValue = value[0] || 2010;
 		const diff = newValue - previousValue.current;
 
-		// @ts-expect-error // Missing types for flipClock methods
-		if (diff > 0) clockInstance.current.face.increment(diff);
-		// @ts-expect-error // Missing types for flipClock methods
-		else if (diff < 0) clockInstance.current.face.decrement(-diff);
+		// @ts-expect-error flipClock face methods not typed
+		if (diff > 0) instance.face.increment(diff);
+		// @ts-expect-error flipClock face methods not typed
+		else if (diff < 0) instance.face.decrement(-diff);
 
 		previousValue.current = newValue;
 	}, [value]);
