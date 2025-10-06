@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "@/components/icons/arrow-left";
 import { ArrowRight } from "@/components/icons/arrow-right";
 import Link from "next/link";
+import { Cambio } from "cambio";
 
 interface YearData {
 	description: string;
@@ -113,15 +114,60 @@ export default function TimelineGallery({
 			{/* Images */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
 				{currentData.images.map((src, idx) => (
-					<Image
-						unoptimized
-						key={idx}
-						src={src}
-						alt={`SAR ${currentYear} ${idx}`}
-						width={300}
-						height={200}
-						className="rounded-lg"
-					/>
+					<Cambio.Root key={idx} dismissible>
+						<Cambio.Trigger
+							className={"trigger"}
+							style={
+								{
+									// width: isTall ? "15rem" : "25rem",
+									// aspectRatio: `${image.width} / ${image.height}`,
+								}
+							}
+						>
+							<Image
+								unoptimized
+								src={src}
+								alt={`SAR ${currentYear} - ${idx + 1}`}
+								width={450}
+								height={251}
+								loading="eager"
+								className="rounded-lg shadow-lg object-contain"
+								style={{
+									pointerEvents: "none",
+									objectFit: "contain",
+								}}
+							/>
+						</Cambio.Trigger>
+						<Cambio.Portal>
+							<Cambio.Backdrop
+								{...({
+									className: "backdrop",
+								} as unknown as Record<string, unknown>)}
+							/>
+							<Cambio.Popup
+								className="popup"
+								style={{
+									maxHeight: "80vh",
+									maxWidth: "95vw",
+									// aspectRatio: `${image.width} / ${image.height}`,
+								}}
+							>
+								<Image
+									unoptimized
+									src={src}
+									alt={`SAR ${currentYear} - ${idx + 1}`}
+									width={800}
+									height={251}
+									loading="eager"
+									className="rounded-lg shadow-lg object-contain"
+									style={{
+										pointerEvents: "none",
+										objectFit: "contain",
+									}}
+								/>
+							</Cambio.Popup>
+						</Cambio.Portal>
+					</Cambio.Root>
 				))}
 			</div>
 		</div>

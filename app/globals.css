@@ -129,3 +129,36 @@
     @apply bg-background text-foreground;
   }
 }
+
+main,
+body {
+  isolation: isolate;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: oklch(0 0 0 / 40%);
+}
+
+@media (max-width: 768px) {
+  .popup {
+    width: 90%;
+  }
+}
+
+.trigger {
+  position: relative;
+  width: 100%;
+  cursor: zoom-in;
+}
+
+.popup,
+.trigger {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 8px;
+}

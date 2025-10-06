@@ -1,5 +1,6 @@
 "use client";
 
+import { Cambio } from "cambio";
 import React, { useState } from "react";
 import Image from "next/image";
 import SelectDate from "@/components/select-date";
@@ -39,15 +40,60 @@ export default function TimelineHome({ imagesByYear }: TimelineHomeProps) {
 
 				<div className="flex justify-center w-full flex-1 relative">
 					{currentImages.map((src, idx) => (
-						<Image
-							unoptimized
-							key={idx}
-							src={src}
-							alt={`SAR ${currentYear} - ${idx + 1}`}
-							width={450}
-							height={251}
-							className="rounded-lg shadow-lg object-contain"
-						/>
+						<Cambio.Root key={idx} dismissible>
+							<Cambio.Trigger
+								className={"trigger"}
+								style={
+									{
+										// width: isTall ? "15rem" : "25rem",
+										// aspectRatio: `${image.width} / ${image.height}`,
+									}
+								}
+							>
+								<Image
+									unoptimized
+									src={src}
+									alt={`SAR ${currentYear} - ${idx + 1}`}
+									width={450}
+									height={251}
+									loading="eager"
+									className="rounded-lg shadow-lg object-contain"
+									style={{
+										pointerEvents: "none",
+										objectFit: "contain",
+									}}
+								/>
+							</Cambio.Trigger>
+							<Cambio.Portal>
+								<Cambio.Backdrop
+									{...({
+										className: "backdrop",
+									} as unknown as Record<string, unknown>)}
+								/>
+								<Cambio.Popup
+									className="popup"
+									style={{
+										maxHeight: "80vh",
+										maxWidth: "95vw",
+										// aspectRatio: `${image.width} / ${image.height}`,
+									}}
+								>
+									<Image
+										unoptimized
+										src={src}
+										alt={`SAR ${currentYear} - ${idx + 1}`}
+										width={800}
+										height={251}
+										loading="eager"
+										className="rounded-lg shadow-lg object-contain"
+										style={{
+											pointerEvents: "none",
+											objectFit: "contain",
+										}}
+									/>
+								</Cambio.Popup>
+							</Cambio.Portal>
+						</Cambio.Root>
 					))}
 				</div>
 
