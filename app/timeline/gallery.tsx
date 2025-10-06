@@ -6,6 +6,7 @@ import SelectDate from "@/components/select-date";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "@/components/icons/arrow-left";
 import { ArrowRight } from "@/components/icons/arrow-right";
+import Link from "next/link";
 
 interface YearData {
 	description: string;
@@ -31,6 +32,15 @@ export default function TimelineGallery({
 
 	return (
 		<div className="px-4 py-8 flex flex-col items-center">
+			<div className="w-full flex justify-end mb-4">
+				<Link
+					href="/"
+					className="text-sm flex gap-1 items-center font-semibold text-blue-400 hover:underline"
+				>
+					<ArrowLeft className="size-5" /> Back to Home
+				</Link>
+			</div>
+
 			<h1 className="text-3xl font-bold text-center">
 				SAR Timeline: 2019–2024
 			</h1>
@@ -63,6 +73,42 @@ export default function TimelineGallery({
 			<p className="mt-6 max-w-2xl text-center whitespace-pre-line">
 				{currentData.description}
 			</p>
+
+			{currentData.images.length > 0 && (
+				<div className="mt-6 max-w-2xl text-left bg-muted rounded-2xl p-4">
+					<h2 className="font-semibold text-lg mb-2">Color Legend:</h2>
+					<ul className="space-y-2">
+						<li className="flex items-center gap-2">
+							<span className="size-4 aspect-square bg-purple-600 rounded-full inline-block"></span>
+							<span>
+								Magenta/Purple: Areas where the radar signal decreased after the
+								event. Indicates burn scars due to vegetation removal.
+							</span>
+						</li>
+						<li className="flex items-center gap-2">
+							<span className="size-4 aspect-square bg-black rounded-full inline-block"></span>
+							<span>
+								Black/Dark Blue: Bodies of water such as rivers and lakes, which
+								reflect very little radar signal.
+							</span>
+						</li>
+						<li className="flex items-center gap-2">
+							<span className="size-4 aspect-square bg-gray-400 rounded-full inline-block"></span>
+							<span>
+								Gray/White: Areas with no significant changes between the two
+								dates. Can be soil, urban areas, or unaffected vegetation.
+							</span>
+						</li>
+						<li className="flex items-center gap-2">
+							<span className="size-4 aspect-square bg-green-500 rounded-full inline-block"></span>
+							<span>
+								Bright Green: Areas where the radar signal increased. May
+								indicate vegetation regrowth or agricultural crops.
+							</span>
+						</li>
+					</ul>
+				</div>
+			)}
 
 			{/* Images */}
 			<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">

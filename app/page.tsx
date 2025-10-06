@@ -51,11 +51,14 @@ export default async function Home() {
 						The Challenge
 					</h2>
 					<p className="leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
-						Poconé, in the heart of the Mato Grosso Pantanal, faces advancing
-						wildfires, a problem that destroys ecosystems and threatens local
-						communities. Our challenge at the NASA Space Apps Challenge was to
-						use SAR technology to monitor these changes even when smoke hides
-						the ground from human view.
+						In the heart of the Mato Grosso Pantanal, Poconé faces recurring
+						wildfires that destroy ecosystems and threaten local communities.
+						Our mission for the NASA Space Apps Challenge was to use Synthetic
+						Aperture Radar (SAR) technology to monitor these transformations —
+						even when smoke and clouds hide the surface from optical sensors. To
+						analyze the affected regions in detail and understand the impact on
+						vegetation structure and soil moisture, we used Sentinel-1
+						dual-polarization (VV and VH) radar imagery.
 					</p>
 				</section>
 
@@ -64,9 +67,14 @@ export default async function Home() {
 						Wildfire Timeline (2010–2024)
 					</h2>
 					<p className="max-w-2xl mb-4 leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
-						Explore how the Pantanal has changed over the years. Use the control
-						below to navigate between radar images and visualize the impact of
-						wildfires.
+						Our study combines tabular environmental data dating back to 2010
+						with Sentinel-1 radar imagery available from 2019 onward. This
+						integration allows us to connect long-term records of fire and land
+						use with recent high-resolution radar observations — offering a
+						continuous and physically grounded perspective of how the Pantanal
+						has evolved over the years. Use the control below to navigate
+						between multi-temporal SAR images and visualize how fire and mining
+						activities have reshaped the region, even under clouds or smoke.
 					</p>
 
 					<TimelineHome imagesByYear={imagesByYear} />
@@ -77,9 +85,12 @@ export default async function Home() {
 						What We Discovered
 					</h2>
 					<p className="leading-7 [&:not(:first-child)]:mt-6 z-10 text-clip text-transparent bg-clip-text bg-white mix-blend-difference">
-						SAR images revealed impacted areas that were not visible in optical
-						sensors. The VH polarization proved more sensitive to biomass loss,
-						while VV highlighted changes in soil moisture.
+						Radar backscatter analysis revealed fire scars and degradation areas
+						invisible in optical imagery. The VH polarization proved more
+						sensitive to biomass loss, while VV highlighted changes in surface
+						moisture and soil roughness after burning. Together, these
+						polarizations offer a detailed, physics-based view of how
+						environmental pressures transform the Pantanal’s diverse ecosystems.
 					</p>
 				</section>
 
